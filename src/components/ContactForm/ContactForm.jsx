@@ -5,12 +5,11 @@ import { ErrorMessage } from "formik";
 import css from "./ContactForm.module.css";
 import { nanoid } from "nanoid";
 
-const ContactForm = ({ setContacts }) => {
+const ContactForm = ({ addContacts }) => {
   const handleAddContact = (values, actions) => {
-    setContacts((prevState) => [
-      ...prevState,
-      { name: values.userName, number: values.userTel, id: nanoid() },
-    ]);
+    addContacts(() => {
+      return { name: values.userName, number: values.userTel, id: nanoid() };
+    });
     actions.resetForm();
   };
 
