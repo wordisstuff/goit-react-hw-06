@@ -18,10 +18,6 @@ function App() {
 
   const filter = useSelector((state) => state.contacts.filter);
 
-  useEffect(() => {
-    localStorage.setItem("Contacts data", JSON.stringify(contacts));
-  }, [contacts]);
-
   const addContacts = (data) => {
     dispatch(addContact(data));
   };
