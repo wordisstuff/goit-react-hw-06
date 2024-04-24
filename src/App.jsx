@@ -13,7 +13,7 @@ import {
 function App() {
   const dispatch = useDispatch();
   const contacts = useSelector((state) => {
-    return state.contacts.contacts;
+    return state.contacts.contacts.items;
   });
 
   const filter = useSelector((state) => state.contacts.filter);
