@@ -4,6 +4,11 @@ import ContactForm from "./components/ContactForm/ContactForm";
 import { useEffect } from "react";
 import SearchBox from "./components/SearchBox/SearchBox";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  addContact,
+  deleteContact,
+  filterContacts,
+} from "./redux/contacts/contactsReducer";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,27 +23,15 @@ function App() {
   }, [contacts]);
 
   const addContacts = (data) => {
-    const action = {
-      type: "ADD_CONTACT",
-      payload: data,
-    };
-    dispatch(action);
+    dispatch(addContact(data));
   };
 
   const onDeleteContact = (userId) => {
-    const action = {
-      type: "DELETE_CONTACT",
-      payload: userId,
-    };
-    dispatch(action);
+    dispatch(deleteContact(userId));
   };
 
   const onFilterContacts = (ev) => {
-    const action = {
-      type: "FILTER_CONTACTS",
-      payload: ev.target.value,
-    };
-    dispatch(action);
+    dispatch(filterContacts(ev.target.value));
   };
 
   const filteredContacts = contacts.filter((userContact) =>
