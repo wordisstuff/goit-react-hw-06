@@ -1,32 +1,15 @@
-// import { useState } from 'react'
-import contactsListData from "./data/contactsList.json";
 import "./App.css";
 import ContactList from "./components/ContactList/ContactList";
 import ContactForm from "./components/ContactForm/ContactForm";
-import { useEffect, useState } from "react";
-import { nanoid } from "nanoid";
+import { useEffect } from "react";
 import SearchBox from "./components/SearchBox/SearchBox";
 import { useSelector, useDispatch } from "react-redux";
 
-// const contactsListData = [
-//   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-//   { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-//   { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-//   { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-// ];
-
 function App() {
-  // const [contacts, setContacts] = useState(() => {
-  //   const contactsData =
-  //     JSON.parse(localStorage.getItem("Contacts data")) ?? contactsListData;
-  //   return contactsData;
-  // });
   const dispatch = useDispatch();
   const contacts = useSelector((state) => {
-    console.log(state);
     return state.contacts.contacts;
   });
-  // const [filter, setFilter] = useState("");
 
   const filter = useSelector((state) => state.contacts.filter);
 
@@ -50,11 +33,17 @@ function App() {
     dispatch(action);
   };
 
+  const onFilterContacts = (ev) => {
+    const action = {
+      type: "FILTER_CONTACTS",
+      payload: ev.target.value,
+    };
+    dispatch(action);
+  };
+
   const filteredContacts = contacts.filter((userContact) =>
     userContact.name.toLowerCase().includes(filter.toLowerCase())
   );
-
-  const onFilterContacts = (ev) => filter(ev.target.value);
 
   return (
     <>
@@ -65,7 +54,7 @@ function App() {
         <span style={{ color: "#80945baa" }}>♾️</span>k
       </h1>
       <ContactForm addContacts={addContacts} />
-      <SearchBox filter={filter} />
+      <SearchBox filter={filter} onFilterContacts={onFilterContacts} />
       <ContactList data={filteredContacts} onDeleteContact={onDeleteContact} />
     </>
   );

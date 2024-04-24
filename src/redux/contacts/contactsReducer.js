@@ -17,6 +17,12 @@ switch (action.type) {
                 ...state,
                 contacts: state.contacts.filter(contact => contact.id !== action.payload)
             }
+    }
+        case "FILTER_CONTACTS": {
+            return {
+                ...state,
+                filter: action.payload
+            }
         }
 }
 

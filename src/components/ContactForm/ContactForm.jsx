@@ -7,8 +7,10 @@ import { nanoid } from "nanoid";
 
 const ContactForm = ({ addContacts }) => {
   const handleAddContact = (values, actions) => {
-    addContacts(() => {
-      return { name: values.userName, number: values.userTel, id: nanoid() };
+    addContacts({
+      name: values.userName,
+      number: values.userTel,
+      id: nanoid(),
     });
     actions.resetForm();
   };
