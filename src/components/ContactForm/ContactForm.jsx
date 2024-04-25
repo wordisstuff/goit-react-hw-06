@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import validationSchema from "../helpers/validationSchema";
 import { ErrorMessage } from "formik";
-import {addContact} from "../../redux/contactsSlice"
+import { addContact } from '/src/redux/contactsSlice.js';
 
 import css from "./ContactForm.module.css";
 import { nanoid } from "nanoid";
@@ -12,6 +12,7 @@ const ContactForm = () => {
   const dispatch = useDispatch()
 
   const handleAddContact = (values, actions) => {
+    console.log(values)
     dispatch(addContact({
       name: values.userName,
       number: values.userTel,

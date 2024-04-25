@@ -24,9 +24,9 @@ function App() {
   //   dispatch(filterContacts(ev.target.value));
   // };
 
-  const filteredContacts = contacts.filter((userContact) =>
-    userContact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  // const filteredContacts = contacts.filter((userContact) =>
+  //   userContact.name.toLowerCase().includes(filter.toLowerCase())
+  // );
 
   return (
     <>
@@ -37,8 +37,8 @@ function App() {
         <span style={{ color: "#80945baa" }}>♾️</span>k
       </h1>
       <ContactForm/>
-      <SearchBox filter={filter} onFilterContacts={onFilterContacts} />
-      <ContactList data={filteredContacts} onDeleteContact={onDeleteContact} />
+      <SearchBox  />
+      <ContactList/>
     </>
   );
 }

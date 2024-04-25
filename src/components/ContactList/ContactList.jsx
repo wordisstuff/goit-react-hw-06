@@ -1,6 +1,12 @@
-import Contact from "../Contact/Contact";
 
-const ContactList = ({ data, onDeleteContact }) => {
+import Contact from "../Contact/Contact";
+import {useSelector} from "react-redux"
+import { selectContacts } from "../../redux/contactsSlice";
+
+
+const ContactList = () => {
+
+const data = useSelector(selectContacts)
   return (
     <>
       {data &&

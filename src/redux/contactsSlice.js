@@ -29,3 +29,7 @@ export const {deleteContact,addContact} = contactsSlice.actions;
 
 // Редюсер слайсу
 export const contactsReducer = contactsSlice.reducer;
+
+export const selectContacts = state => {
+  return state.contacts.items
+}
