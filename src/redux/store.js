@@ -26,9 +26,9 @@ import {
 import storage from "redux-persist/lib/storage";
 
 const contactsPeristConfig = {
-  key: "mailbox",
+  key: "contacts",
   storage,
-  whitelist: ["contacts"],
+  whitelist: ["items"],
 };
 
 export const store = configureStore({

@@ -1,19 +1,28 @@
-
 import Contact from "../Contact/Contact";
-import {useSelector} from "react-redux"
-import { selectContacts } from "../../redux/contactsSlice";
-
+import { useDispatch, useSelector } from "react-redux";
+import { deleteContact, selectContacts } from "../../redux/contactsSlice";
+import { selectorFilter } from "../../redux/filtersSlice";
 
 const ContactList = () => {
+  const data = useSelector(selectContacts);
+  const filter = useSelector(selectorFilter);
+  const dispatch = useDispatch();
 
-const data = useSelector(selectContacts)
+  const delContactFunc = (id) => {
+    dispatch(deleteContact(id));
+  };
+
+  const filteredContacts = data.filter((userContact) =>
+    userContact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
     <>
       {data &&
-        data.map((it) => {
+        filteredContacts.map((it) => {
           return (
             <div key={it.id}>
-              <Contact data={it} onDeleteContact={onDeleteContact} />
+              <Contact data={it} delContactFunc={delContactFunc} />
             </div>
           );
         })}

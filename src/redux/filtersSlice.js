@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const INIT_STATE = {
-    filter: {name:''}
+const INIT_STATE = {name:''
 };
 
 const filtersSlice = createSlice({
@@ -12,7 +11,7 @@ const filtersSlice = createSlice({
   // Об'єкт редюсерів
   reducers: {
       filterContacts(state, action) {
-          state.filter.name = action.payload;
+          state.name = action.payload;
     },
   },
 });
@@ -22,3 +21,7 @@ export const { filterContacts} = filtersSlice.actions;
 
 // Редюсер слайсу
 export const filtersReducer = filtersSlice.reducer;
+
+export const selectorFilter = state => {
+  return state.filter.name
+}

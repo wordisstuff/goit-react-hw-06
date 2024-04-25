@@ -1,4 +1,4 @@
-const Contact = ({ data, onDeleteContact }) => {
+const Contact = ({ data, delContactFunc }) => {
   const { name, number, id } = data;
   return (
     <>
@@ -7,7 +7,7 @@ const Contact = ({ data, onDeleteContact }) => {
       <button
         type="button"
         onClick={() => {
-          onDeleteContact(id);
+          delContactFunc(id);
         }}
       >
         🪣
